@@ -16,6 +16,10 @@
 		AD1AA9072105D8120075D142 /* LeisureMapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1AA9062105D8120075D142 /* LeisureMapUITests.swift */; };
 		AD1AA9152105DB080075D142 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1AA9142105DB080075D142 /* SplashViewController.swift */; };
 		AD1AA9182105DB650075D142 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1AA9172105DB650075D142 /* LoginViewController.swift */; };
+		ADCFA7DE210858BA00311980 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCFA7DD210858BA00311980 /* MasterViewController.swift */; };
+		ADCFA7E0210858CB00311980 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCFA7DF210858CB00311980 /* DetailViewController.swift */; };
+		ADCFA7E32108591C00311980 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCFA7E22108591C00311980 /* MapViewController.swift */; };
+		ADCFA7E62108593100311980 /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCFA7E52108593100311980 /* NoteViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +55,10 @@
 		AD1AA9082105D8120075D142 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD1AA9142105DB080075D142 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		AD1AA9172105DB650075D142 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		ADCFA7DD210858BA00311980 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		ADCFA7DF210858CB00311980 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		ADCFA7E22108591C00311980 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		ADCFA7E52108593100311980 /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +109,9 @@
 		AD1AA8E52105D80E0075D142 /* LeisureMap */ = {
 			isa = PBXGroup;
 			children = (
+				ADCFA7E42108592300311980 /* NoteFlow */,
+				ADCFA7E1210858E300311980 /* MapFlow */,
+				ADCFA7DC2108588B00311980 /* MasterDetail */,
 				AD1AA9162105DB480075D142 /* LoginFlow */,
 				AD1AA8E62105D80E0075D142 /* AppDelegate.swift */,
 				AD1AA8E82105D80E0075D142 /* ViewController.swift */,
@@ -137,6 +148,31 @@
 				AD1AA9172105DB650075D142 /* LoginViewController.swift */,
 			);
 			path = LoginFlow;
+			sourceTree = "<group>";
+		};
+		ADCFA7DC2108588B00311980 /* MasterDetail */ = {
+			isa = PBXGroup;
+			children = (
+				ADCFA7DD210858BA00311980 /* MasterViewController.swift */,
+				ADCFA7DF210858CB00311980 /* DetailViewController.swift */,
+			);
+			path = MasterDetail;
+			sourceTree = "<group>";
+		};
+		ADCFA7E1210858E300311980 /* MapFlow */ = {
+			isa = PBXGroup;
+			children = (
+				ADCFA7E22108591C00311980 /* MapViewController.swift */,
+			);
+			path = MapFlow;
+			sourceTree = "<group>";
+		};
+		ADCFA7E42108592300311980 /* NoteFlow */ = {
+			isa = PBXGroup;
+			children = (
+				ADCFA7E52108593100311980 /* NoteViewController.swift */,
+			);
+			path = NoteFlow;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,10 +306,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADCFA7E62108593100311980 /* NoteViewController.swift in Sources */,
+				ADCFA7DE210858BA00311980 /* MasterViewController.swift in Sources */,
 				AD1AA9182105DB650075D142 /* LoginViewController.swift in Sources */,
 				AD1AA9152105DB080075D142 /* SplashViewController.swift in Sources */,
+				ADCFA7E0210858CB00311980 /* DetailViewController.swift in Sources */,
 				AD1AA8E92105D80E0075D142 /* ViewController.swift in Sources */,
 				AD1AA8E72105D80E0075D142 /* AppDelegate.swift in Sources */,
+				ADCFA7E32108591C00311980 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
