@@ -54,7 +54,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-242" y="-63"/>
+            <point key="canvasLocation" x="-711" y="-60"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="Rhz-Ku-IjK">
@@ -93,7 +93,10 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="VLu-pw-b7n"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="btnLoginClicked:" destination="t91-f1-sqV" eventType="touchUpInside" id="UXg-1q-8Gu"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -122,7 +125,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CKs-kC-Kza" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="525.60000000000002" y="-63.418290854572717"/>
+            <point key="canvasLocation" x="57" y="-60"/>
         </scene>
         <!--Master View Controller-->
         <scene sceneID="2Vv-c0-UVA">
@@ -141,7 +144,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X5e-HM-Jm7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2070" y="-71"/>
+            <point key="canvasLocation" x="1601" y="-68"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="gFq-WG-qJq">
@@ -160,7 +163,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YEq-mY-N8r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3042" y="-71"/>
+            <point key="canvasLocation" x="2572" y="-68"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="da4-GJ-5UG">
@@ -175,7 +178,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q0k-Qb-Gsh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3874" y="-256"/>
+            <point key="canvasLocation" x="3404" y="-253"/>
         </scene>
         <!--Note View Controller-->
         <scene sceneID="5XR-ae-OnY">
@@ -190,7 +193,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="anE-O6-bqF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3874" y="440"/>
+            <point key="canvasLocation" x="3404" y="443"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fgp-O7-b2H">
@@ -208,7 +211,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B1E-kt-ZfG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1310" y="-71"/>
+            <point key="canvasLocation" x="841" y="-68"/>
         </scene>
     </scenes>
 </document>
