@@ -48,6 +48,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="lbVersion" destination="hmI-rz-ksN" id="KWw-sJ-Gy2"/>
                         <segue destination="t91-f1-sqV" kind="show" identifier="moveToLoginViewSegue" id="0MB-z9-gWj"/>
                     </connections>
                 </viewController>
