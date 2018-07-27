@@ -22,6 +22,9 @@
 		AD1AA9182105DB650075D142 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1AA9172105DB650075D142 /* LoginViewController.swift */; };
 		AD2BED4F210AAA820007BA65 /* ServiceCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2BED4E210AAA820007BA65 /* ServiceCategory.swift */; };
 		AD2BED51210AAB580007BA65 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2BED50210AAB580007BA65 /* Store.swift */; };
+		AD2BED53210ABFC40007BA65 /* SQLiteWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2BED52210ABFC40007BA65 /* SQLiteWorker.swift */; };
+		AD2BED56210AFFCC0007BA65 /* ServiceCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2BED55210AFFCC0007BA65 /* ServiceCellView.swift */; };
+		AD2BED5A210B09800007BA65 /* StoreCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2BED59210B09800007BA65 /* StoreCellView.swift */; };
 		AD4E6BA92109617700CDDE56 /* NetWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4E6BA82109617700CDDE56 /* NetWorker.swift */; };
 		ADCFA7DE210858BA00311980 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCFA7DD210858BA00311980 /* MasterViewController.swift */; };
 		ADCFA7E0210858CB00311980 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCFA7DF210858CB00311980 /* DetailViewController.swift */; };
@@ -72,6 +75,9 @@
 		AD1AA9172105DB650075D142 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AD2BED4E210AAA820007BA65 /* ServiceCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCategory.swift; sourceTree = "<group>"; };
 		AD2BED50210AAB580007BA65 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		AD2BED52210ABFC40007BA65 /* SQLiteWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteWorker.swift; sourceTree = "<group>"; };
+		AD2BED55210AFFCC0007BA65 /* ServiceCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCellView.swift; sourceTree = "<group>"; };
+		AD2BED59210B09800007BA65 /* StoreCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCellView.swift; sourceTree = "<group>"; };
 		AD4E6BA82109617700CDDE56 /* NetWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorker.swift; sourceTree = "<group>"; };
 		ADCFA7DD210858BA00311980 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		ADCFA7DF210858CB00311980 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -196,9 +202,19 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		AD2BED54210AFF2D0007BA65 /* CellView */ = {
+			isa = PBXGroup;
+			children = (
+				AD2BED55210AFFCC0007BA65 /* ServiceCellView.swift */,
+				AD2BED59210B09800007BA65 /* StoreCellView.swift */,
+			);
+			path = CellView;
+			sourceTree = "<group>";
+		};
 		AD4E6BA72109614B00CDDE56 /* Worker */ = {
 			isa = PBXGroup;
 			children = (
+				AD2BED52210ABFC40007BA65 /* SQLiteWorker.swift */,
 				AD4E6BA82109617700CDDE56 /* NetWorker.swift */,
 				AD0A703B2109CF19002B0A97 /* FileWorker.swift */,
 			);
@@ -208,6 +224,7 @@
 		ADCFA7DC2108588B00311980 /* MasterDetail */ = {
 			isa = PBXGroup;
 			children = (
+				AD2BED54210AFF2D0007BA65 /* CellView */,
 				ADCFA7DD210858BA00311980 /* MasterViewController.swift */,
 				ADCFA7DF210858CB00311980 /* DetailViewController.swift */,
 			);
@@ -460,12 +477,15 @@
 				ADCFA7DE210858BA00311980 /* MasterViewController.swift in Sources */,
 				AD2BED51210AAB580007BA65 /* Store.swift in Sources */,
 				AD1AA9182105DB650075D142 /* LoginViewController.swift in Sources */,
+				AD2BED5A210B09800007BA65 /* StoreCellView.swift in Sources */,
+				AD2BED53210ABFC40007BA65 /* SQLiteWorker.swift in Sources */,
 				AD1AA9152105DB080075D142 /* SplashViewController.swift in Sources */,
 				ADCFA7E0210858CB00311980 /* DetailViewController.swift in Sources */,
 				AD0A703C2109CF19002B0A97 /* FileWorker.swift in Sources */,
 				AD1AA8E92105D80E0075D142 /* ViewController.swift in Sources */,
 				AD1AA8E72105D80E0075D142 /* AppDelegate.swift in Sources */,
 				ADCFA7E32108591C00311980 /* MapViewController.swift in Sources */,
+				AD2BED56210AFFCC0007BA65 /* ServiceCellView.swift in Sources */,
 				AD4E6BA92109617700CDDE56 /* NetWorker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

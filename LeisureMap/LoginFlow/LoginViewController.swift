@@ -10,6 +10,7 @@ import UIKit
 import SwiftyJSON
 
 class LoginViewController: UIViewController,UITextFieldDelegate,AsyncResponseDelegate,FileWorkerDelegate {
+    
     @IBOutlet weak var textAccount: UITextField!
     
     @IBOutlet weak var textPassword: UITextField!
@@ -18,6 +19,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate,AsyncResponseDel
     
     var requestWorker:AsyncRequestWorker?
     var fileWorker:FileWorker?
+    let storeFileName:String = "store.json"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +30,8 @@ class LoginViewController: UIViewController,UITextFieldDelegate,AsyncResponseDel
         requestWorker = AsyncRequestWorker()
         requestWorker?.responseDelegate = self
         
+        fileWorker = FileWorker()
+        fileWorker?.fileWorkerDelegate = self
        
     
         print("viewDidLoad")
@@ -123,49 +127,37 @@ class LoginViewController: UIViewController,UITextFieldDelegate,AsyncResponseDel
         case 1://login
              self.readServiceCategory()
             break
-        case 2://service cateogy
+        case 2://service cateogy 通过数据库存取
             do{
                 if let dataFromString = responseString.data(using: .utf8, allowLossyConversion: false) {
                     let json = try JSON(data: dataFromString)
+                    //创建数据库
+                    let sqliteContext = SQLiteWorker()
+                    sqliteContext.createDatabase()
+                    sqliteContext.clearAll()
+                  
                     for (index,subJson):(String, JSON) in json {
                         // Do something you want
-                        let serviceIndex = subJson["serviceIndex"].intValue
                         let name = subJson["name"].stringValue
-                        let index = subJson["index"].intValue
-                        let imagePath = subJson["imagePath"].intValue
-                        print("\(index):\(name)")
+                        let imagePath = subJson["imagePath"].stringValue
+                        //插入数据
+                        sqliteContext.insertData(_name: name, _imagepath: imagePath)
+                       
                  }
+//                    let categories = sqliteContext.readData()
+//                    print(categories)
                 }
             }catch{
                 print(error)
             }
             self.readStore()
             break
-        case 3://store
+        case 3://store 通过本地文件读取
             //
-            do{
-                if let dataFromString = responseString.data(using: .utf8, allowLossyConversion: false) {
-                    let json = try JSON(data: dataFromString)
-                    for (index,subJson):(String, JSON) in json {
-                        // Do something you want
-                        let index:Int = subJson["index"].intValue
-                        let name:String = subJson["name"].stringValue
-                        let imagePath:String = subJson["imagePath"].stringValue
-                        let location:JSON = subJson["location"]
-                        let address = location["name"].stringValue
-                        let latitude = location["latitude"].doubleValue
-                        let longitude = location["longitude"].doubleValue
-                        print("\(index):\(name):latitude:\(latitude)")
-                    }
-                }
-            }catch{
-                print(error)
-            }
+
             
-            //
-            DispatchQueue.main.async {
-                self.performSegue(withIdentifier: "moveToMasterViewSegue", sender: self)
-            }
+            fileWorker?.writeToFile(content: responseString, fileName:storeFileName,tag:1)
+           
             break
         default:
             break
@@ -178,8 +170,14 @@ class LoginViewController: UIViewController,UITextFieldDelegate,AsyncResponseDel
 //        }
     }
     
+    //MARK:- FileWorkerDelegate
     func fileWorkWriteComplete(_ sender: FileWorker, fileName: String, tag: Int) {
         print("write complete")
+        print("\(fileName)")
+        //
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "moveToMasterViewSegue", sender: self)
+        }
     }
     
     func fileWorkReadComplete(_ sender: FileWorker, content: String, tag: Int) {
