@@ -9,7 +9,7 @@
 import Foundation
 protocol FileWorkerDelegate {
     func fileWorkWriteComplete(_ sender:FileWorker,fileName:String,tag:Int)
-    func fileWorkReadComplete(_ sender:FileWorker,fileName:String,tag:Int)
+    func fileWorkReadComplete(_ sender:FileWorker,content:String,tag:Int)
 }
 
 
@@ -26,9 +26,20 @@ class FileWorker {
             }
         }
     }
+    
     func readFromFile(fileName:String,tag:Int)->String {
         var result:String = ""
+        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first{
+            let fileURL = dir.appendingPathComponent(fileName)//拿到文件路径
+            do{
+                let content = try String(contentsOf: fileURL, encoding: .utf8)
+                self.fileWorkerDelegate?.fileWorkReadComplete(self, content: content, tag: tag)
+                result = content
+            }catch{
+                print(error)
+            }
         
-        return result
     }
+        return result
+   }
 }

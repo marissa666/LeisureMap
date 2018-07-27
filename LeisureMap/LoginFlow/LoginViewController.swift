@@ -7,10 +7,9 @@
 //
 
 import UIKit
+import SwiftyJSON
 
-class LoginViewController: UIViewController,UITextFieldDelegate,AsyncResponseDelegate {
-    
-     
+class LoginViewController: UIViewController,UITextFieldDelegate,AsyncResponseDelegate,FileWorkerDelegate {
     @IBOutlet weak var textAccount: UITextField!
     
     @IBOutlet weak var textPassword: UITextField!
@@ -18,6 +17,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate,AsyncResponseDel
     @IBOutlet weak var btnLogin: UIButton!
     
     var requestWorker:AsyncRequestWorker?
+    var fileWorker:FileWorker?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +27,8 @@ class LoginViewController: UIViewController,UITextFieldDelegate,AsyncResponseDel
         //
         requestWorker = AsyncRequestWorker()
         requestWorker?.responseDelegate = self
+        
+       
     
         print("viewDidLoad")
     }
@@ -38,6 +40,16 @@ class LoginViewController: UIViewController,UITextFieldDelegate,AsyncResponseDel
        //
         let from:String = "https://score.azurewebsites.net/api/login/\(account)/\(password)"
         requestWorker?.getResponse(from: from, tag: 1)
+       
+    }
+    func readServiceCategory() {
+        let from = "https://score.azurewebsites.net/api/servicecategory"
+        requestWorker?.getResponse(from: from, tag: 2)
+    }
+    
+    func readStore() {
+        let from = "https://score.azurewebsites.net/api/store"
+        requestWorker?.getResponse(from: from, tag: 3)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -106,11 +118,73 @@ class LoginViewController: UIViewController,UITextFieldDelegate,AsyncResponseDel
     
     
     func receivedResponse(_ sender: AsyncRequestWorker, responseString: String, tag: Int) {
-        print(responseString)
-       
+       // print("\(tag):\(responseString)")
+        switch tag {
+        case 1://login
+             self.readServiceCategory()
+            break
+        case 2://service cateogy
+            do{
+                if let dataFromString = responseString.data(using: .utf8, allowLossyConversion: false) {
+                    let json = try JSON(data: dataFromString)
+                    for (index,subJson):(String, JSON) in json {
+                        // Do something you want
+                        let serviceIndex = subJson["serviceIndex"].intValue
+                        let name = subJson["name"].stringValue
+                        let index = subJson["index"].intValue
+                        let imagePath = subJson["imagePath"].intValue
+                        print("\(index):\(name)")
+                 }
+                }
+            }catch{
+                print(error)
+            }
+            self.readStore()
+            break
+        case 3://store
+            //
+            do{
+                if let dataFromString = responseString.data(using: .utf8, allowLossyConversion: false) {
+                    let json = try JSON(data: dataFromString)
+                    for (index,subJson):(String, JSON) in json {
+                        // Do something you want
+                        let index:Int = subJson["index"].intValue
+                        let name:String = subJson["name"].stringValue
+                        let imagePath:String = subJson["imagePath"].stringValue
+                        let location:JSON = subJson["location"]
+                        let address = location["name"].stringValue
+                        let latitude = location["latitude"].doubleValue
+                        let longitude = location["longitude"].doubleValue
+                        print("\(index):\(name):latitude:\(latitude)")
+                    }
+                }
+            }catch{
+                print(error)
+            }
+            
+            //
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "moveToMasterViewSegue", sender: self)
+            }
+            break
+        default:
+            break
+        }
+        
+        
+        
 //        DispatchQueue.main.async {
 //            self.performSegue(withIdentifier: "moveToLoginViewSegue", sender: self)//页面切换
 //        }
     }
+    
+    func fileWorkWriteComplete(_ sender: FileWorker, fileName: String, tag: Int) {
+        print("write complete")
+    }
+    
+    func fileWorkReadComplete(_ sender: FileWorker, content: String, tag: Int) {
+        print("read complete")
+    }
+    
 
 }
